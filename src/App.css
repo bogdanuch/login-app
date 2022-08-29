@@ -1,0 +1,17 @@
+.Header {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.Wrapper {
+  background-color: #202948;
+  margin: 20px;
+}
+
+.Home {
+  margin: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+}

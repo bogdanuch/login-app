@@ -30,6 +30,7 @@ function Login(): ReactElement {
 
         if (!emailValidation) setLoginError('Please input correct email');
         if (!passwordValidation) setLoginError('Please input password');
+        if (!emailValidation && !passwordValidation) setLoginError('Please input correct email and password');
         if (emailValidation && passwordValidation) {
             try {
                 await mockRequest({email, password}, 1);
@@ -38,8 +39,6 @@ function Login(): ReactElement {
             } catch (e) {
                 setLoginError('Incorrect login and password combination');
             }
-        } else {
-            setLoginError('Please input correct email and password');
         }
     };
 

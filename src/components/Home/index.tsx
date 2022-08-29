@@ -6,7 +6,7 @@ import useMetamask from "../../contexts/useMetamask";
 import styles from "./styles";
 
 function Home(): ReactElement {
-    const {userName} = useLogin();
+    const {userName, logout} = useLogin();
     const {address, chainID, userBalance} = useMetamask();
 
     return (
@@ -24,6 +24,7 @@ function Home(): ReactElement {
                 type="submit"
                 fullWidth
                 variant="contained"
+                onClick={logout}
                 sx={styles.disconnectButton}
             >
                 Disconnect

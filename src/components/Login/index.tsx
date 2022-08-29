@@ -10,6 +10,7 @@ import styles from "./styles"
 
 function Login(): ReactElement {
     const [LoginError, setLoginError] = useState('')
+    const [requestInProgress, setRequestInProgress] = useState(false);
     const [isRemember, setIsRemember] = useState(false);
     const [isWrongEmail, setIsWrongEmail] = useState(false);
     const [isWrongPassword, setIsWrongPassword] = useState(false);
@@ -33,10 +34,12 @@ function Login(): ReactElement {
         if (!emailValidation && !passwordValidation) setLoginError('Please input correct email and password');
         if (emailValidation && passwordValidation) {
             try {
-                await mockRequest({email, password}, 1);
+                setRequestInProgress(true);
+                await mockRequest({email, password}, 1000);
                 login(email, isRemember);
                 navigate('/', {replace: true});
             } catch (e) {
+                setRequestInProgress(false);
                 setLoginError('Incorrect login and password combination');
             }
         }
@@ -95,6 +98,7 @@ function Login(): ReactElement {
                         type="submit"
                         fullWidth
                         variant="contained"
+                        disabled={requestInProgress}
                         sx={styles.submitButton}
                     >
                         Sign In

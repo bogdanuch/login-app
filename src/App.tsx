@@ -14,8 +14,20 @@ const darkTheme = createTheme({
         mode: 'dark',
         primary: {
             main: '#334776',
-        }
+        },
     },
+    components: {
+        MuiOutlinedInput: {
+            styleOverrides: {
+                input: {
+                    "&:-webkit-autofill": {
+                        "-webkit-box-shadow": "0 0 0 100px #1c2741 inset",
+                        "-webkit-text-fill-color": "#999ab5",
+                    },
+                }
+            }
+        }
+    }
 });
 
 function App() {
